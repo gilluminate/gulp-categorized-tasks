@@ -1,0 +1,24 @@
+{
+  "name": "gulp-categorized-tasks",
+  "version": "1.0.0",
+  "description": "Display a help dialog describing gulp tasks broken out by configurable categories.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "gilluminate"
+  },
+  "keywords": [
+    "gulp",
+    "tasks",
+    "documentation"
+  ],
+  "author": "Jason Gill",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "dependencies": {
+    "table": "^4.0.3",
+    "ansi-colors": "^2.0.1"
+  },
+  "devDependencies": {
+    "gulp": "*"
+  }
+}
