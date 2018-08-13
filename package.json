@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "Display a help dialog describing gulp tasks broken out by configurable categories.",
   "main": "index.js",
+  "homepage": "https://github.com/gilluminate/gulp-categorized-tasks",
+  "bugs": {
+    "url": "https://github.com/gilluminate/gulp-categorized-tasks"
+  },
   "repository": {
     "type": "git",
-    "url": "gilluminate"
+    "url": "https://github.com/gilluminate/gulp-categorized-tasks.git"
   },
   "keywords": [
     "gulp",
@@ -17,8 +21,5 @@
   "dependencies": {
     "table": "^4.0.3",
     "ansi-colors": "^2.0.1"
-  },
-  "devDependencies": {
-    "gulp": "*"
   }
 }
