@@ -18,10 +18,11 @@ function categorizeTasks(taskCategories) {
 function createTable(data) {
   data.forEach(element => {
     let taskName = element[0],
+      taskRoot = taskName.indexOf(' ') ? taskName.split(' ')[0] : taskName,
       deps;
-    if (gulp.tasks[taskName]) {
+    if (gulp.tasks[taskRoot]) {
       // list dependencies
-      deps = gulp.tasks[taskName].dep.join(", ");
+      deps = gulp.tasks[taskRoot].dep.join(", ");
       element[2] = deps;
 
       // make default task special
