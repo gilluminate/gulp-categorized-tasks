@@ -20,7 +20,7 @@
   "license": "SEE LICENSE IN LICENSE.md",
   "dependencies": {
     "table": "^4.0.3",
-    "ansi-colors": "^2.0.1"
+    "ansi-colors": "^2.0.5"
   },
   "devDependencies": {
     "jshint": "^2.11.0"
