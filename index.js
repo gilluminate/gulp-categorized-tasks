@@ -1,14 +1,12 @@
-"use strict";
-
-var gulp = require("gulp");
-var table = require("table");
-var colors = require("ansi-colors");
+const gulp = require("gulp");
+const table = require("table");
+const colors = require("ansi-colors");
 
 function categorizeTasks(taskCategories) {
   taskCategories.forEach(category => {
-    let keys = Object.keys(category),
-      key = keys[0];
-    var taskTable = createTable(category[key]);
+    const keys = Object.keys(category);
+    const key = keys[0];
+    const taskTable = createTable(category[key]);
     console.log(); // space between categories
     console.log(colors.inverse(" " + key + " "));
     console.log(taskTable);
@@ -17,12 +15,26 @@ function categorizeTasks(taskCategories) {
 
 function createTable(data) {
   data.forEach(element => {
-    let taskName = element[0],
-      taskRoot = taskName.indexOf(' ') ? taskName.split(' ')[0] : taskName,
-      deps;
-    if (gulp.tasks[taskRoot]) {
+    let taskName = element[0];
+    // let taskRoot = taskName.indexOf(' ') ? taskName.split(' ')[0] : taskName;
+    let deps = ' ';
+    const tasksList = gulp.tree().nodes;
+    const taskTree = gulp.tree({ deep: true }).nodes;
+    
+    if (tasksList.indexOf(taskName) > -1) {
+      const taskIndex = tasksList.indexOf(taskName);
       // list dependencies
-      deps = gulp.tasks[taskRoot].dep.join(", ");
+      if (taskTree[taskIndex].branch) {
+        const depsArray = [];
+        for (const node of taskTree[taskIndex].nodes[0].nodes) {
+          console.log(node.label)
+          depsArray.push(node.label);
+        }
+        deps = depsArray.join(", ");
+        if (deps === "") {
+          deps = ' '
+        }
+      }
       element[2] = deps;
 
       // make default task special
@@ -37,9 +49,9 @@ function createTable(data) {
       console.error(colors.red('"' + taskName + '" could not be found'));
     }
   });
-  data.unshift(["Task", "Description", "Dependencies"]);
-  let output = table.table(data, {
-    drawHorizontalLine: function(index, size) {
+  // data.unshift(["Task", "Description", "Dependencies"]);
+  const output = table.table(data, {
+    drawHorizontalLine: (index, size) => {
       return index === 0 || index === 1 || index === size;
     }
   });
