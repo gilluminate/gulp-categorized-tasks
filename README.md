@@ -9,7 +9,7 @@ Missing tasks will be called out as warning messages.
 
 Install using:
 
-    npm i --save-dev gulp-task-listing
+    npm i --save-dev gulp-categorized-tasks
 
 Then add it to your gulpfile like so:
 
